@@ -90,7 +90,7 @@ export type StatutCandidature =
 
 export interface Candidature {
   id: string
-  logement_id: string
+  logement_id: string | null
   nom: string
   prenom: string
   email: string
