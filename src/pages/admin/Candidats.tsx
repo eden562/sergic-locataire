@@ -196,6 +196,7 @@ export default function AdminCandidats() {
     const adresseBien = logement ? `${logement.adresse}, ${logement.ville}` : ''
 
     const { data, error } = await supabase.functions.invoke('accept-candidature', {
+      headers: { 'Content-Type': 'application/json' },
       body: {
         candidature_id: candidature.id,
         email: candidature.email,
