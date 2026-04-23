@@ -184,7 +184,7 @@ export default function AdminCandidats() {
   async function assignLogement(candidatureId: string, logementId: string | null) {
     await supabase.from('candidatures').update({ logement_id: logementId }).eq('id', candidatureId)
     setCandidatures((prev) =>
-      prev.map((c) => c.id === candidatureId ? { ...c, logement_id: logementId } : c)
+      prev.map((c) => c.id === candidatureId ? { ...c, logement_id: logementId } as Candidature : c)
     )
   }
 
