@@ -24,7 +24,7 @@ export function Sidebar({ items, title }: SidebarProps) {
   }
 
   return (
-    <aside className="w-64 bg-foncia-navy min-h-screen flex flex-col flex-shrink-0">
+    <aside className="hidden md:flex w-64 bg-foncia-navy min-h-screen flex-col flex-shrink-0">
       {/* Logo */}
       <div className="p-6 border-b border-white/10">
         <FonciaLogo size="sm" />
