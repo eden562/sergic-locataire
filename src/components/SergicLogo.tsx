@@ -1,4 +1,4 @@
-vainterface SergicLogoProps {
+interface SergicLogoProps {
   size?: 'sm' | 'md' | 'lg'
 }
 
