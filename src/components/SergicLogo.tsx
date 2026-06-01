@@ -1,4 +1,4 @@
-interface SergicLogoProps {
+vainterface SergicLogoProps {
   size?: 'sm' | 'md' | 'lg'
 }
 
@@ -22,7 +22,7 @@ export function SergicLogo({ size = 'md' }: SergicLogoProps) {
         fill="#1a3a6e"
         letterSpacing="1"
       >
-        FONCIA
+        SERGIC
       </text>
       <rect x="0" y="36" width="155" height="4" fill="#e8610a" rx="1" />
     </svg>
