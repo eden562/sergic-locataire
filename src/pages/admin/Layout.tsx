@@ -19,8 +19,8 @@ export default function AdminLayout() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-foncia-bg flex items-center justify-center">
-        <div className="text-foncia-navy text-lg font-medium animate-pulse">Chargement…</div>
+      <div className="min-h-screen bg-sergic-bg flex items-center justify-center">
+        <div className="text-sergic-navy text-lg font-medium animate-pulse">Chargement…</div>
       </div>
     )
   }

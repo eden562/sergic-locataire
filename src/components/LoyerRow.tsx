@@ -28,11 +28,11 @@ export function LoyerRow({ loyer, onMarkPaid, showActions = false }: LoyerRowPro
   return (
     <div className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
       <div className="flex items-center gap-4">
-        <div className="w-10 h-10 rounded-lg bg-foncia-bg flex items-center justify-center text-foncia-navy font-bold text-sm">
+        <div className="w-10 h-10 rounded-lg bg-sergic-bg flex items-center justify-center text-sergic-navy font-bold text-sm">
           {String(loyer.mois).padStart(2, '0')}
         </div>
         <div>
-          <p className="font-medium text-foncia-navy">
+          <p className="font-medium text-sergic-navy">
             {MOIS[loyer.mois - 1]} {loyer.annee}
           </p>
           <p className="text-xs text-gray-500">
@@ -41,7 +41,7 @@ export function LoyerRow({ loyer, onMarkPaid, showActions = false }: LoyerRowPro
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <span className="font-semibold text-foncia-navy">
+        <span className="font-semibold text-sergic-navy">
           {total.toLocaleString('fr-FR')} €
         </span>
         <span className={`badge ${statutBadge[loyer.statut]}`}>

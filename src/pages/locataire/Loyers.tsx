@@ -49,7 +49,7 @@ export default function LocataireLoyers() {
 
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="card text-center">
-          <p className="text-2xl font-bold text-foncia-navy">{loyers.length}</p>
+          <p className="text-2xl font-bold text-sergic-navy">{loyers.length}</p>
           <p className="text-xs text-gray-500">Échéances totales</p>
         </div>
         <div className="card text-center">
@@ -57,7 +57,7 @@ export default function LocataireLoyers() {
           <p className="text-xs text-gray-500">Total réglé</p>
         </div>
         <div className="card text-center">
-          <p className={`text-2xl font-bold ${en_attente > 0 ? 'text-foncia-orange' : 'text-green-600'}`}>
+          <p className={`text-2xl font-bold ${en_attente > 0 ? 'text-sergic-orange' : 'text-green-600'}`}>
             {en_attente}
           </p>
           <p className="text-xs text-gray-500">En attente</p>
@@ -65,7 +65,7 @@ export default function LocataireLoyers() {
       </div>
 
       <div className="card">
-        <h2 className="font-bold text-foncia-navy mb-4">Détail des paiements</h2>
+        <h2 className="font-bold text-sergic-navy mb-4">Détail des paiements</h2>
         {loyers.length === 0 ? (
           <p className="text-gray-400 text-sm py-4 text-center">Aucun loyer enregistré.</p>
         ) : (

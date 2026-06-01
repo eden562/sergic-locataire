@@ -85,7 +85,7 @@ export default function AdminDocuments() {
       {selected && (
         <>
           <div className="card mb-6">
-            <h2 className="font-bold text-foncia-navy mb-4">Uploader un document</h2>
+            <h2 className="font-bold text-sergic-navy mb-4">Uploader un document</h2>
             <form onSubmit={handleUpload} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">Type</label>
@@ -111,7 +111,7 @@ export default function AdminDocuments() {
                   required
                   accept=".pdf,.jpg,.jpeg,.png"
                   onChange={(e) => setNewDoc((f) => ({ ...f, file: e.target.files?.[0] ?? null }))}
-                  className="input-field text-sm file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:bg-foncia-bg file:text-foncia-navy file:font-medium"
+                  className="input-field text-sm file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:bg-sergic-bg file:text-sergic-navy file:font-medium"
                 />
               </div>
               <div className="sm:col-span-3 flex justify-end">

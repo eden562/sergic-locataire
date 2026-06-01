@@ -57,10 +57,10 @@ export default function LocataireProfil() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="card">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-bold text-foncia-navy">Informations personnelles</h2>
+            <h2 className="font-bold text-sergic-navy">Informations personnelles</h2>
             <button
               onClick={() => setEditing(!editing)}
-              className="text-sm text-foncia-blue hover:underline"
+              className="text-sm text-sergic-blue hover:underline"
             >
               {editing ? 'Annuler' : 'Modifier'}
             </button>
@@ -111,7 +111,7 @@ export default function LocataireProfil() {
               ].map(({ label, value }) => (
                 <div key={label} className="flex justify-between py-2 border-b border-gray-50 last:border-0">
                   <span className="text-sm text-gray-500">{label}</span>
-                  <span className="text-sm font-medium text-foncia-navy">{value ?? '—'}</span>
+                  <span className="text-sm font-medium text-sergic-navy">{value ?? '—'}</span>
                 </div>
               ))}
             </div>
@@ -119,7 +119,7 @@ export default function LocataireProfil() {
         </div>
 
         <div className="card">
-          <h2 className="font-bold text-foncia-navy mb-4">Changer le mot de passe</h2>
+          <h2 className="font-bold text-sergic-navy mb-4">Changer le mot de passe</h2>
           <form onSubmit={handlePasswordChange} className="space-y-4">
             <div>
               <label className="block text-xs font-medium text-gray-500 mb-1">Nouveau mot de passe</label>

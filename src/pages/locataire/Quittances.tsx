@@ -75,11 +75,11 @@ export default function LocataireQuittances() {
           {loyers.map((loyer) => (
             <div key={loyer.id} className="card hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-foncia-bg flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 rounded-xl bg-sergic-bg flex items-center justify-center text-2xl">
                   🧾
                 </div>
                 <div>
-                  <p className="font-bold text-foncia-navy">
+                  <p className="font-bold text-sergic-navy">
                     {MOIS[loyer.mois - 1]} {loyer.annee}
                   </p>
                   <p className="text-xs text-gray-500">
@@ -91,7 +91,7 @@ export default function LocataireQuittances() {
               </div>
               <div className="flex justify-between items-center text-sm mb-4">
                 <span className="text-gray-500">Loyer + charges</span>
-                <span className="font-bold text-foncia-navy">
+                <span className="font-bold text-sergic-navy">
                   {(loyer.montant + loyer.charges).toLocaleString('fr-FR')} €
                 </span>
               </div>

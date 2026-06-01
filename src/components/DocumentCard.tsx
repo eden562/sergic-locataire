@@ -30,11 +30,11 @@ interface DocumentCardProps {
 export function DocumentCard({ document, onDelete }: DocumentCardProps) {
   return (
     <div className="card flex items-center gap-4 hover:shadow-md transition-shadow">
-      <div className="w-12 h-12 rounded-xl bg-foncia-bg flex items-center justify-center text-2xl flex-shrink-0">
+      <div className="w-12 h-12 rounded-xl bg-sergic-bg flex items-center justify-center text-2xl flex-shrink-0">
         {typeIcons[document.type]}
       </div>
       <div className="flex-1 min-w-0">
-        <p className="font-medium text-foncia-navy truncate">{document.nom}</p>
+        <p className="font-medium text-sergic-navy truncate">{document.nom}</p>
         <p className="text-xs text-gray-500">
           {typeLabels[document.type]} · {new Date(document.date_upload).toLocaleDateString('fr-FR')}
         </p>
@@ -44,7 +44,7 @@ export function DocumentCard({ document, onDelete }: DocumentCardProps) {
           href={document.url}
           target="_blank"
           rel="noreferrer"
-          className="text-sm text-foncia-blue hover:underline font-medium"
+          className="text-sm text-sergic-blue hover:underline font-medium"
         >
           Voir
         </a>

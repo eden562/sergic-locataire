@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FonciaLogo } from '../../components/FonciaLogo'
+import { SergicLogo } from '../../components/SergicLogo'
 import { supabase, uploadFile } from '../../lib/supabase'
 
 type Situation = 'salarie' | 'independant' | 'fonctionnaire' | 'retraite' | 'etudiant' | 'sans_emploi'
@@ -172,7 +172,7 @@ export default function CandidatFormulaire() {
           variables: {
             prénom: form.prenom,
             nom: form.nom,
-            nom_agence: 'Foncia',
+            nom_agence: 'Sergic',
           },
         },
       })
@@ -188,10 +188,10 @@ export default function CandidatFormulaire() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-foncia-bg flex items-center justify-center p-4">
+      <div className="min-h-screen bg-sergic-bg flex items-center justify-center p-4">
         <div className="w-full max-w-lg card text-center py-12">
           <div className="text-6xl mb-4">🎉</div>
-          <h1 className="text-2xl font-bold text-foncia-navy mb-3">
+          <h1 className="text-2xl font-bold text-sergic-navy mb-3">
             Dossier envoyé !
           </h1>
           <p className="text-gray-600 mb-2">
@@ -211,13 +211,13 @@ export default function CandidatFormulaire() {
   }
 
   return (
-    <div className="min-h-screen bg-foncia-bg">
+    <div className="min-h-screen bg-sergic-bg">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <FonciaLogo size="md" />
+          <SergicLogo size="md" />
           <div className="text-right">
-            <p className="text-sm font-medium text-foncia-navy">Dossier de candidature</p>
+            <p className="text-sm font-medium text-sergic-navy">Dossier de candidature</p>
             <p className="text-xs text-gray-500">Étape {step} sur 4</p>
           </div>
         </div>
@@ -232,7 +232,7 @@ export default function CandidatFormulaire() {
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
                     step === s.id
-                      ? 'step-active shadow-lg shadow-foncia-blue/30'
+                      ? 'step-active shadow-lg shadow-sergic-blue/30'
                       : step > s.id
                       ? 'step-done'
                       : 'step-pending'
@@ -257,7 +257,7 @@ export default function CandidatFormulaire() {
           {/* ÉTAPE 1 */}
           {step === 1 && (
             <div className="space-y-5">
-              <h2 className="text-lg font-bold text-foncia-navy">Informations personnelles</h2>
+              <h2 className="text-lg font-bold text-sergic-navy">Informations personnelles</h2>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -349,7 +349,7 @@ export default function CandidatFormulaire() {
           {/* ÉTAPE 2 */}
           {step === 2 && (
             <div className="space-y-5">
-              <h2 className="text-lg font-bold text-foncia-navy">Situation financière</h2>
+              <h2 className="text-lg font-bold text-sergic-navy">Situation financière</h2>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -400,10 +400,10 @@ export default function CandidatFormulaire() {
               </div>
 
               {form.revenus && (
-                <div className="bg-foncia-bg rounded-lg p-4">
+                <div className="bg-sergic-bg rounded-lg p-4">
                   <p className="text-sm text-gray-600">
                     Taux d'effort indicatif :
-                    <strong className="text-foncia-navy ml-1">
+                    <strong className="text-sergic-navy ml-1">
                       {/* Loyer fictif pour illustration */}
                       basé sur vos revenus déclarés
                     </strong>
@@ -419,7 +419,7 @@ export default function CandidatFormulaire() {
           {/* ÉTAPE 3 */}
           {step === 3 && (
             <div className="space-y-5">
-              <h2 className="text-lg font-bold text-foncia-navy">Pièces justificatives</h2>
+              <h2 className="text-lg font-bold text-sergic-navy">Pièces justificatives</h2>
               <p className="text-sm text-gray-500">
                 Formats acceptés : PDF, JPG, PNG. Taille max : 10 Mo par fichier.
               </p>
@@ -494,7 +494,7 @@ export default function CandidatFormulaire() {
           {/* ÉTAPE 4 */}
           {step === 4 && (
             <div className="space-y-5">
-              <h2 className="text-lg font-bold text-foncia-navy">Garant (optionnel)</h2>
+              <h2 className="text-lg font-bold text-sergic-navy">Garant (optionnel)</h2>
               <p className="text-sm text-gray-500">
                 Un garant peut renforcer votre dossier. Cette étape est facultative.
               </p>
@@ -505,7 +505,7 @@ export default function CandidatFormulaire() {
                   id="has_garant"
                   checked={form.has_garant}
                   onChange={(e) => update('has_garant', e.target.checked)}
-                  className="w-4 h-4 accent-foncia-blue"
+                  className="w-4 h-4 accent-sergic-blue"
                 />
                 <label htmlFor="has_garant" className="text-sm font-medium text-gray-700 cursor-pointer">
                   J'ai un garant à présenter

@@ -119,16 +119,16 @@ export default function AdminMessages() {
               onClick={() => setSelected(thread.user.id)}
               className={`w-full text-left p-4 rounded-xl transition-all ${
                 selected === thread.user.id
-                  ? 'bg-foncia-blue text-white'
+                  ? 'bg-sergic-blue text-white'
                   : 'bg-white hover:bg-gray-50 border border-gray-100'
               }`}
             >
               <div className="flex items-center justify-between mb-1">
-                <p className={`font-semibold text-sm ${selected === thread.user.id ? 'text-white' : 'text-foncia-navy'}`}>
+                <p className={`font-semibold text-sm ${selected === thread.user.id ? 'text-white' : 'text-sergic-navy'}`}>
                   {thread.user.prenom} {thread.user.nom}
                 </p>
                 {thread.unread > 0 && (
-                  <span className="bg-foncia-orange text-white text-xs px-2 py-0.5 rounded-full font-bold">
+                  <span className="bg-sergic-orange text-white text-xs px-2 py-0.5 rounded-full font-bold">
                     {thread.unread}
                   </span>
                 )}
@@ -152,7 +152,7 @@ export default function AdminMessages() {
           ) : (
             <>
               <div className="border-b border-gray-100 pb-3 mb-4 flex-shrink-0">
-                <p className="font-bold text-foncia-navy">
+                <p className="font-bold text-sergic-navy">
                   {selectedUser?.prenom} {selectedUser?.nom}
                 </p>
                 <p className="text-xs text-gray-500">{selectedUser?.email}</p>
@@ -163,7 +163,7 @@ export default function AdminMessages() {
                   <div key={msg.id} className={`flex ${msg.expediteur === 'admin' ? 'justify-end' : 'justify-start'}`}>
                     <div className={`max-w-sm px-4 py-3 rounded-2xl text-sm ${
                       msg.expediteur === 'admin'
-                        ? 'bg-foncia-blue text-white rounded-br-none'
+                        ? 'bg-sergic-blue text-white rounded-br-none'
                         : 'bg-gray-100 text-gray-800 rounded-bl-none'
                     }`}>
                       <p>{msg.contenu}</p>

@@ -61,7 +61,7 @@ export default function LocataireDemandes() {
 
       {showForm && (
         <div className="card mb-6">
-          <h2 className="font-bold text-foncia-navy mb-4">Nouvelle demande</h2>
+          <h2 className="font-bold text-sergic-navy mb-4">Nouvelle demande</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>

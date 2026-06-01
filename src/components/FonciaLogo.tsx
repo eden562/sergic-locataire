@@ -1,8 +1,8 @@
-interface FonciaLogoProps {
+interface SergicLogoProps {
   size?: 'sm' | 'md' | 'lg'
 }
 
-export function FonciaLogo({ size = 'md' }: FonciaLogoProps) {
+export function SergicLogo({ size = 'md' }: SergicLogoProps) {
   const w = { sm: 90, md: 140, lg: 200 }[size]
 
   return (

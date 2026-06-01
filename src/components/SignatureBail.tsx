@@ -57,7 +57,7 @@ export function SignatureBail({ bailUrl, onSign }: SignatureBailProps) {
         <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
           <span className="text-4xl">✅</span>
         </div>
-        <h2 className="text-2xl font-bold text-foncia-navy mb-2">
+        <h2 className="text-2xl font-bold text-sergic-navy mb-2">
           Bail signé avec succès !
         </h2>
         <p className="text-gray-500 mb-6">
@@ -98,7 +98,7 @@ export function SignatureBail({ bailUrl, onSign }: SignatureBailProps) {
       {/* Étape 1 : Lecture du bail */}
       {step === 'lecture' && (
         <div className="card">
-          <h2 className="text-lg font-bold text-foncia-navy mb-4">
+          <h2 className="text-lg font-bold text-sergic-navy mb-4">
             1. Lisez votre bail attentivement
           </h2>
           <div
@@ -114,10 +114,10 @@ export function SignatureBail({ bailUrl, onSign }: SignatureBailProps) {
               />
             ) : (
               <div className="space-y-3 text-sm text-gray-700 leading-relaxed">
-                <p className="font-bold text-base text-foncia-navy">CONTRAT DE LOCATION</p>
+                <p className="font-bold text-base text-sergic-navy">CONTRAT DE LOCATION</p>
                 <p>Le présent contrat de bail est établi conformément à la loi du 6 juillet 1989 tendant à améliorer les rapports locatifs.</p>
                 <p><strong>Article 1 – Désignation des parties</strong><br/>
-                Le présent bail est consenti et accepté entre les soussignés : Foncia Gérance, agissant en qualité de mandataire du propriétaire, et le locataire désigné ci-après.</p>
+                Le présent bail est consenti et accepté entre les soussignés : Sergic Gérance, agissant en qualité de mandataire du propriétaire, et le locataire désigné ci-après.</p>
                 <p><strong>Article 2 – Désignation des locaux</strong><br/>
                 Les locaux loués sont situés à l'adresse mentionnée dans l'espace locataire, comprenant l'appartement avec toutes ses dépendances.</p>
                 <p><strong>Article 3 – Durée du bail</strong><br/>
@@ -150,7 +150,7 @@ export function SignatureBail({ bailUrl, onSign }: SignatureBailProps) {
               checked={accepte}
               onChange={(e) => setAccepte(e.target.checked)}
               disabled={!luEntier}
-              className="mt-1 w-4 h-4 accent-foncia-blue cursor-pointer"
+              className="mt-1 w-4 h-4 accent-sergic-blue cursor-pointer"
             />
             <label
               htmlFor="accepte"
@@ -174,7 +174,7 @@ export function SignatureBail({ bailUrl, onSign }: SignatureBailProps) {
       {/* Étape 2 : Vérification SMS */}
       {step === 'sms' && (
         <div className="card">
-          <h2 className="text-lg font-bold text-foncia-navy mb-2">
+          <h2 className="text-lg font-bold text-sergic-navy mb-2">
             2. Vérification par SMS
           </h2>
           <p className="text-sm text-gray-500 mb-6">
@@ -227,7 +227,7 @@ export function SignatureBail({ bailUrl, onSign }: SignatureBailProps) {
               </button>
               <button
                 onClick={() => setSmsSent(false)}
-                className="text-sm text-foncia-blue hover:underline w-full text-center"
+                className="text-sm text-sergic-blue hover:underline w-full text-center"
               >
                 Renvoyer le code
               </button>
@@ -239,15 +239,15 @@ export function SignatureBail({ bailUrl, onSign }: SignatureBailProps) {
       {/* Étape 3 : Confirmation finale */}
       {step === 'signature' && (
         <div className="card">
-          <h2 className="text-lg font-bold text-foncia-navy mb-2">
+          <h2 className="text-lg font-bold text-sergic-navy mb-2">
             3. Signature électronique
           </h2>
           <p className="text-sm text-gray-500 mb-6">
             En cliquant sur "Signer le bail", vous apposez votre signature électronique qui a la même valeur juridique qu'une signature manuscrite (loi n° 2000-230 du 13 mars 2000).
           </p>
 
-          <div className="bg-foncia-bg border border-foncia-navy/20 rounded-lg p-4 mb-6">
-            <div className="flex items-center gap-2 text-foncia-navy">
+          <div className="bg-sergic-bg border border-sergic-navy/20 rounded-lg p-4 mb-6">
+            <div className="flex items-center gap-2 text-sergic-navy">
               <span className="text-xl">🔒</span>
               <span className="text-sm font-medium">Signature sécurisée</span>
             </div>

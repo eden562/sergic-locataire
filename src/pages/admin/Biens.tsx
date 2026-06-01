@@ -72,7 +72,7 @@ export default function AdminBiens() {
 
       {showForm && (
         <div className="card mb-6">
-          <h2 className="font-bold text-foncia-navy mb-4">
+          <h2 className="font-bold text-sergic-navy mb-4">
             {editing ? 'Modifier le bien' : 'Nouveau bien'}
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -133,24 +133,24 @@ export default function AdminBiens() {
           <div key={bien.id} className={`card ${!bien.actif ? 'opacity-60' : ''}`}>
             <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="font-bold text-foncia-navy">{bien.adresse}</p>
+                <p className="font-bold text-sergic-navy">{bien.adresse}</p>
                 <p className="text-sm text-gray-500">{bien.cp} {bien.ville}</p>
               </div>
               <span className={`badge ${bien.actif ? 'badge-green' : 'badge-gray'}`}>
                 {bien.actif ? 'Actif' : 'Archivé'}
               </span>
             </div>
-            <div className="grid grid-cols-3 gap-3 text-center bg-foncia-bg rounded-lg p-3 mb-4">
+            <div className="grid grid-cols-3 gap-3 text-center bg-sergic-bg rounded-lg p-3 mb-4">
               <div>
-                <p className="font-bold text-foncia-navy">{bien.surface} m²</p>
+                <p className="font-bold text-sergic-navy">{bien.surface} m²</p>
                 <p className="text-xs text-gray-500">Surface</p>
               </div>
               <div>
-                <p className="font-bold text-foncia-navy">{bien.nb_pieces} pièces</p>
+                <p className="font-bold text-sergic-navy">{bien.nb_pieces} pièces</p>
                 <p className="text-xs text-gray-500">Composition</p>
               </div>
               <div>
-                <p className="font-bold text-foncia-orange">{(bien.loyer_hc + bien.charges).toLocaleString('fr-FR')} €</p>
+                <p className="font-bold text-sergic-orange">{(bien.loyer_hc + bien.charges).toLocaleString('fr-FR')} €</p>
                 <p className="text-xs text-gray-500">Loyer CC</p>
               </div>
             </div>

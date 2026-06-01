@@ -69,7 +69,7 @@ export default function AdminDemandes() {
             key={key}
             onClick={() => setFilter(key)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              filter === key ? 'bg-foncia-blue text-white' : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+              filter === key ? 'bg-sergic-blue text-white' : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
             }`}
           >
             {label}
@@ -83,14 +83,14 @@ export default function AdminDemandes() {
             <div className="card text-center py-8 text-gray-400">Aucune demande.</div>
           ) : (
             displayed.map((d) => (
-              <div key={d.id} onClick={() => setSelected(d)} className={`cursor-pointer transition-all ${selected?.id === d.id ? 'ring-2 ring-foncia-blue rounded-xl' : ''}`}>
+              <div key={d.id} onClick={() => setSelected(d)} className={`cursor-pointer transition-all ${selected?.id === d.id ? 'ring-2 ring-sergic-blue rounded-xl' : ''}`}>
                 <DemandeItem
                   demande={d}
                   onStatusChange={changeStatus}
                 />
                 {d.user && (
                   <div className="px-4 pb-3 -mt-2">
-                    <p className="text-xs text-foncia-blue">
+                    <p className="text-xs text-sergic-blue">
                       {d.user.prenom} {d.user.nom} · {d.user.email}
                     </p>
                   </div>
@@ -102,10 +102,10 @@ export default function AdminDemandes() {
 
         {selected && (
           <div className="card h-fit sticky top-6">
-            <h2 className="font-bold text-foncia-navy mb-1">{selected.titre}</h2>
+            <h2 className="font-bold text-sergic-navy mb-1">{selected.titre}</h2>
             <p className="text-sm text-gray-500 mb-4">{selected.description}</p>
 
-            <div className="bg-foncia-bg rounded-lg p-3 mb-4 text-sm">
+            <div className="bg-sergic-bg rounded-lg p-3 mb-4 text-sm">
               <p><span className="text-gray-500">Locataire :</span> <strong>{selected.user?.prenom} {selected.user?.nom}</strong></p>
               <p><span className="text-gray-500">Email :</span> {selected.user?.email}</p>
               <p><span className="text-gray-500">Date :</span> {new Date(selected.date_creation).toLocaleDateString('fr-FR')}</p>

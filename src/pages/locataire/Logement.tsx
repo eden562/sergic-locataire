@@ -36,7 +36,7 @@ export default function LocataireLogement() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="card">
-          <h2 className="font-bold text-foncia-navy mb-4">Caractéristiques</h2>
+          <h2 className="font-bold text-sergic-navy mb-4">Caractéristiques</h2>
           <div className="grid grid-cols-2 gap-4">
             {[
               { label: 'Adresse', value: logement?.adresse },
@@ -47,14 +47,14 @@ export default function LocataireLogement() {
             ].map(({ label, value }) => (
               <div key={label}>
                 <p className="text-xs text-gray-500 uppercase tracking-wide">{label}</p>
-                <p className="font-medium text-foncia-navy">{value ?? '—'}</p>
+                <p className="font-medium text-sergic-navy">{value ?? '—'}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="card">
-          <h2 className="font-bold text-foncia-navy mb-4">Mon bail</h2>
+          <h2 className="font-bold text-sergic-navy mb-4">Mon bail</h2>
           <div className="space-y-3">
             {[
               { label: 'Loyer hors charges', value: `${bail.loyer_hc.toLocaleString('fr-FR')} €` },
@@ -89,7 +89,7 @@ export default function LocataireLogement() {
                   }`}
                 >
                   <span className="text-sm text-gray-600">{item!.label}</span>
-                  <span className={`text-sm ${item!.highlight ? 'text-foncia-orange text-base' : 'text-foncia-navy font-medium'}`}>
+                  <span className={`text-sm ${item!.highlight ? 'text-sergic-orange text-base' : 'text-sergic-navy font-medium'}`}>
                     {item!.value}
                   </span>
                 </div>
@@ -99,7 +99,7 @@ export default function LocataireLogement() {
 
         {logement?.description && (
           <div className="card lg:col-span-2">
-            <h2 className="font-bold text-foncia-navy mb-3">Description</h2>
+            <h2 className="font-bold text-sergic-navy mb-3">Description</h2>
             <p className="text-sm text-gray-600 leading-relaxed">{logement.description}</p>
           </div>
         )}

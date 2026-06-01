@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { FonciaLogo } from '../../components/FonciaLogo'
+import { SergicLogo } from '../../components/SergicLogo'
 import { SignatureBail } from '../../components/SignatureBail'
 import { supabase } from '../../lib/supabase'
 import { useAuth } from '../../hooks/useAuth'
@@ -44,19 +44,19 @@ export default function BailSignaturePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-foncia-bg flex items-center justify-center">
-        <div className="text-foncia-navy animate-pulse">Chargement…</div>
+      <div className="min-h-screen bg-sergic-bg flex items-center justify-center">
+        <div className="text-sergic-navy animate-pulse">Chargement…</div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-foncia-bg">
+    <div className="min-h-screen bg-sergic-bg">
       <header className="bg-white border-b border-gray-200 px-6 py-4 mb-8">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <FonciaLogo size="md" />
+          <SergicLogo size="md" />
           <div className="text-right">
-            <p className="text-sm font-medium text-foncia-navy">Signature du bail</p>
+            <p className="text-sm font-medium text-sergic-navy">Signature du bail</p>
             {bail?.logement && (
               <p className="text-xs text-gray-500">{bail.logement.adresse}</p>
             )}
@@ -65,10 +65,10 @@ export default function BailSignaturePage() {
       </header>
 
       <main className="max-w-3xl mx-auto px-4 pb-16">
-        <div className="bg-foncia-orange-light border border-foncia-orange/30 rounded-xl p-4 mb-6 flex items-start gap-3">
+        <div className="bg-sergic-orange-light border border-sergic-orange/30 rounded-xl p-4 mb-6 flex items-start gap-3">
           <span className="text-2xl">📋</span>
           <div>
-            <p className="font-semibold text-foncia-navy">Action requise : signature du bail</p>
+            <p className="font-semibold text-sergic-navy">Action requise : signature du bail</p>
             <p className="text-sm text-gray-600 mt-1">
               Bienvenue, {user?.prenom} ! Avant d'accéder à votre espace locataire,
               vous devez lire et signer votre bail de location électroniquement.

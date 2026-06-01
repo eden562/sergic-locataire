@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FonciaLogo } from '../components/FonciaLogo'
+import { SergicLogo } from '../components/SergicLogo'
 import { useAuth } from '../hooks/useAuth'
 
 export default function Login() {
@@ -31,14 +31,14 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-foncia-bg flex items-center justify-center p-4">
+    <div className="min-h-screen bg-sergic-bg flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="flex justify-center mb-8">
-          <FonciaLogo size="lg" />
+          <SergicLogo size="lg" />
         </div>
 
         <div className="card">
-          <h1 className="text-xl font-bold text-foncia-navy mb-1">Connexion</h1>
+          <h1 className="text-xl font-bold text-sergic-navy mb-1">Connexion</h1>
           <p className="text-sm text-gray-500 mb-6">
             Accédez à votre espace personnel
           </p>
@@ -91,7 +91,7 @@ export default function Login() {
           <div className="mt-6 pt-4 border-t border-gray-100 text-center">
             <p className="text-sm text-gray-500">
               Première connexion ?{' '}
-              <a href="/candidat" className="text-foncia-blue hover:underline font-medium">
+              <a href="/candidat" className="text-sergic-blue hover:underline font-medium">
                 Déposer un dossier de candidature
               </a>
             </p>
@@ -99,7 +99,7 @@ export default function Login() {
         </div>
 
         <p className="text-center text-xs text-gray-400 mt-6">
-          © {new Date().getFullYear()} Foncia Gérance · Tous droits réservés
+          © {new Date().getFullYear()} Sergic Gérance · Tous droits réservés
         </p>
       </div>
     </div>

@@ -45,7 +45,7 @@ export default function LocataireDocuments() {
 
   return (
     <div>
-      <PageHeader title="Mes documents" subtitle="Tous vos documents Foncia" />
+      <PageHeader title="Mes documents" subtitle="Tous vos documents Sergic" />
 
       {documents.length === 0 ? (
         <div className="card text-center py-12">
@@ -56,7 +56,7 @@ export default function LocataireDocuments() {
         <div className="space-y-6">
           {Object.entries(grouped).map(([type, docs]) => (
             <div key={type}>
-              <h2 className="font-bold text-foncia-navy mb-3">
+              <h2 className="font-bold text-sergic-navy mb-3">
                 {typeLabels[type] ?? type}
               </h2>
               <div className="space-y-3">

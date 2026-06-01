@@ -33,7 +33,7 @@ export function DemandeItem({ demande, onStatusChange, onClick }: DemandeItemPro
         <div className="flex items-start gap-3 flex-1 min-w-0">
           <span className="text-2xl mt-0.5">{categorieIcons[demande.categorie]}</span>
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-foncia-navy truncate">{demande.titre}</p>
+            <p className="font-semibold text-sergic-navy truncate">{demande.titre}</p>
             <p className="text-sm text-gray-600 mt-1 line-clamp-2">{demande.description}</p>
             <p className="text-xs text-gray-400 mt-2">
               {new Date(demande.date_creation).toLocaleDateString('fr-FR')}
@@ -54,7 +54,7 @@ export function DemandeItem({ demande, onStatusChange, onClick }: DemandeItemPro
                   demande.statut === 'ouvert' ? 'en_cours' : 'resolu'
                 )
               }}
-              className="text-xs text-foncia-blue hover:underline"
+              className="text-xs text-sergic-blue hover:underline"
             >
               {demande.statut === 'ouvert' ? 'Prendre en charge' : 'Marquer résolu'}
             </button>

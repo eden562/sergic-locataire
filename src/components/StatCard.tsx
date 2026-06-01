@@ -9,13 +9,13 @@ interface StatCardProps {
 const colorMap = {
   blue: {
     bg: 'bg-blue-50',
-    icon: 'bg-foncia-blue text-white',
-    text: 'text-foncia-blue',
+    icon: 'bg-sergic-blue text-white',
+    text: 'text-sergic-blue',
   },
   orange: {
     bg: 'bg-orange-50',
-    icon: 'bg-foncia-orange text-white',
-    text: 'text-foncia-orange',
+    icon: 'bg-sergic-orange text-white',
+    text: 'text-sergic-orange',
   },
   green: {
     bg: 'bg-green-50',

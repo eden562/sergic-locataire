@@ -44,31 +44,31 @@ const TEMPLATE_INFO: Record<EmailTemplateCle, { label: string; icon: string; des
 
 const DEFAULT_TEMPLATES: Record<EmailTemplateCle, { objet: string; contenu: string }> = {
   confirmation_reception: {
-    objet: 'Foncia — Votre dossier a bien été reçu',
+    objet: 'Sergic — Votre dossier a bien été reçu',
     contenu: `Bonjour {prénom} {nom},\n\nNous accusons bonne réception de votre dossier de candidature pour le logement situé au {adresse_bien}.\n\nNotre équipe va l'étudier dans les meilleurs délais et reviendra vers vous sous 48 à 72 heures.\n\nCordialement,\nL'équipe {nom_agence}`,
   },
   dossier_incomplet: {
-    objet: 'Foncia — Votre dossier est incomplet',
+    objet: 'Sergic — Votre dossier est incomplet',
     contenu: `Bonjour {prénom} {nom},\n\nNous avons bien reçu votre dossier pour le logement au {adresse_bien}, mais il manque certains documents pour qu'il soit complet.\n\nMerci de compléter votre dossier en vous reconnectant sur notre site.\n\nCordialement,\nL'équipe {nom_agence}`,
   },
   acceptation_candidature: {
-    objet: 'Foncia — Félicitations, votre candidature est acceptée !',
+    objet: 'Sergic — Félicitations, votre candidature est acceptée !',
     contenu: `Bonjour {prénom} {nom},\n\nNous avons le plaisir de vous informer que votre dossier de candidature pour le logement situé au {adresse_bien} a été retenu.\n\nVous allez recevoir un second email pour accéder à votre espace locataire et signer votre bail.\n\nCordialement,\nL'équipe {nom_agence}`,
   },
   ouverture_espace_locataire: {
-    objet: 'Foncia — Accédez à votre espace locataire',
+    objet: 'Sergic — Accédez à votre espace locataire',
     contenu: `Bonjour {prénom} {nom},\n\nVotre espace locataire pour le logement au {adresse_bien} est maintenant ouvert.\n\nPour y accéder et signer votre bail, cliquez sur le lien ci-dessous :\n{lien_connexion}\n\nCe lien est valable 48 heures. Une fois connecté, vous devrez lire et signer votre bail électroniquement avant d'accéder à votre espace complet.\n\nCordialement,\nL'équipe {nom_agence}`,
   },
   rappel_bail_non_signe: {
-    objet: 'Foncia — Rappel : votre bail est en attente de signature',
+    objet: 'Sergic — Rappel : votre bail est en attente de signature',
     contenu: `Bonjour {prénom} {nom},\n\nNous vous rappelons que votre bail pour le logement au {adresse_bien} est toujours en attente de signature électronique.\n\nMerci de vous connecter à votre espace locataire pour finaliser la signature :\n{lien_connexion}\n\nCordialement,\nL'équipe {nom_agence}`,
   },
   quittance_disponible: {
-    objet: 'Foncia — Votre quittance de loyer est disponible',
+    objet: 'Sergic — Votre quittance de loyer est disponible',
     contenu: `Bonjour {prénom} {nom},\n\nVotre quittance de loyer du mois de {date_echeance} pour le logement au {adresse_bien} est désormais disponible.\n\nVous pouvez la télécharger depuis votre espace locataire :\n{lien_connexion}\n\nCordialement,\nL'équipe {nom_agence}`,
   },
   rappel_echeance_loyer: {
-    objet: 'Foncia — Rappel de votre échéance de loyer',
+    objet: 'Sergic — Rappel de votre échéance de loyer',
     contenu: `Bonjour {prénom} {nom},\n\nNous vous rappelons que votre loyer de {montant_loyer} € est dû le {date_echeance} pour le logement au {adresse_bien}.\n\nPour toute question, contactez-nous via votre espace locataire.\n\nCordialement,\nL'équipe {nom_agence}`,
   },
 }
@@ -133,14 +133,14 @@ export default function AdminEmailTemplates() {
                 onClick={() => setSelected(cle)}
                 className={`w-full text-left p-4 rounded-xl transition-all ${
                   selected === cle
-                    ? 'bg-foncia-blue text-white'
+                    ? 'bg-sergic-blue text-white'
                     : 'bg-white hover:bg-gray-50 border border-gray-100'
                 }`}
               >
                 <div className="flex items-start gap-3">
                   <span className="text-xl mt-0.5">{info.icon}</span>
                   <div>
-                    <p className={`font-medium text-sm ${selected === cle ? 'text-white' : 'text-foncia-navy'}`}>
+                    <p className={`font-medium text-sm ${selected === cle ? 'text-white' : 'text-sergic-navy'}`}>
                       {info.label}
                     </p>
                     <p className={`text-xs mt-0.5 ${selected === cle ? 'text-white/70' : 'text-gray-500'}`}>
@@ -160,7 +160,7 @@ export default function AdminEmailTemplates() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-3xl">{TEMPLATE_INFO[selected].icon}</span>
                 <div>
-                  <h2 className="font-bold text-foncia-navy">{TEMPLATE_INFO[selected].label}</h2>
+                  <h2 className="font-bold text-sergic-navy">{TEMPLATE_INFO[selected].label}</h2>
                   <p className="text-sm text-gray-500">{TEMPLATE_INFO[selected].desc}</p>
                 </div>
               </div>

@@ -5,7 +5,16 @@ const supabase = createClient(
   Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
 )
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
 Deno.serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
   try {
     const { candidature_id, email, prenom, nom, adresse_bien } = await req.json()
 
@@ -19,7 +28,6 @@ Deno.serve(async (req) => {
     })
 
     if (authError) {
-      // Utilisateur déjà existant : récupérer son ID depuis public.users
       const { data: existing } = await supabase
         .from('users')
         .select('id')
@@ -59,7 +67,7 @@ Deno.serve(async (req) => {
       }
     } catch (_) { /* lien par défaut */ }
 
-    // 5. Récupérer les templates et envoyer les emails (non bloquant)
+    // 5. Envoyer les emails (non bloquant)
     try {
       const [{ data: tmpl1 }, { data: tmpl2 }] = await Promise.all([
         supabase.from('email_templates').select('*').eq('cle', 'acceptation_candidature').single(),
@@ -75,39 +83,40 @@ Deno.serve(async (req) => {
         return text.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? `{${k}}`)
       }
 
-      const emailsToSend = []
-      if (tmpl1) emailsToSend.push({ subject: interpolate(tmpl1.objet), html: interpolate(tmpl1.contenu) })
-      if (tmpl2) emailsToSend.push({ subject: interpolate(tmpl2.objet), html: interpolate(tmpl2.contenu) })
-
       const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
-      for (const mail of emailsToSend) {
+      for (const tmpl of [tmpl1, tmpl2]) {
+        if (!tmpl) continue
         if (RESEND_API_KEY) {
           await fetch('https://api.resend.com/emails', {
             method: 'POST',
-            headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+            headers: {
+              Authorization: `Bearer ${RESEND_API_KEY}`,
+              'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
               from: 'Foncia <noreply@foncia-locataire.fr>',
               to: [email],
-              subject: mail.subject,
-              html: mail.html,
+              subject: interpolate(tmpl.objet),
+              html: interpolate(tmpl.contenu),
             }),
           })
         } else {
-          console.log(`[EMAIL MOCK] To: ${email} | Subject: ${mail.subject}`)
+          console.log(`[EMAIL MOCK] To: ${email} | Subject: ${interpolate(tmpl.objet)}`)
         }
       }
     } catch (emailErr) {
       console.error('Email sending failed (non-fatal):', emailErr)
     }
 
-    return new Response(JSON.stringify({ success: true, userId }), {
-      headers: { 'Content-Type': 'application/json' },
-    })
+    return new Response(
+      JSON.stringify({ success: true, userId }),
+      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+    )
   } catch (err) {
     console.error('accept-candidature error:', err)
-    return new Response(JSON.stringify({ error: String(err) }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    })
+    return new Response(
+      JSON.stringify({ error: String(err) }),
+      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+    )
   }
 })

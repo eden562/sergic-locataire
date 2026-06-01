@@ -74,13 +74,13 @@ export default function AdminLocataires() {
       <div className="space-y-3">
         {filtered.map((loc) => (
           <div key={loc.id} className="card flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-foncia-blue flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+            <div className="w-12 h-12 rounded-full bg-sergic-blue flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
               {loc.prenom[0]}{loc.nom[0]}
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <p className="font-semibold text-foncia-navy">
+                <p className="font-semibold text-sergic-navy">
                   {loc.prenom} {loc.nom}
                 </p>
                 {loc.bail?.statut_signature === 'en_attente' && (
@@ -92,7 +92,7 @@ export default function AdminLocataires() {
               </div>
               <p className="text-sm text-gray-500">{loc.email} · {loc.telephone}</p>
               {loc.bail?.logement && (
-                <p className="text-xs text-foncia-blue mt-0.5">
+                <p className="text-xs text-sergic-blue mt-0.5">
                   📍 {loc.bail.logement.adresse}, {loc.bail.logement.ville}
                 </p>
               )}

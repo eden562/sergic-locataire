@@ -72,7 +72,7 @@ export default function AdminLoyers() {
             key={key}
             onClick={() => setFilter(key)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              filter === key ? 'bg-foncia-blue text-white' : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+              filter === key ? 'bg-sergic-blue text-white' : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
             }`}
           >
             {label}
@@ -87,7 +87,7 @@ export default function AdminLoyers() {
           displayed.map((loyer) => (
             <div key={loyer.id} className="card">
               {loyer.bail?.user && (
-                <p className="text-xs text-foncia-blue font-medium mb-2">
+                <p className="text-xs text-sergic-blue font-medium mb-2">
                   {loyer.bail.user.prenom} {loyer.bail.user.nom}
                   {loyer.bail.logement && (
                     <span className="text-gray-400 ml-2">— {loyer.bail.logement.adresse}</span>

@@ -25,8 +25,8 @@ export function EmailEditor({ template, onSave }: EmailEditorProps) {
     .replace(/{adresse_bien}/g, '12 rue de la Paix, 75001 Paris')
     .replace(/{montant_loyer}/g, '850')
     .replace(/{date_echeance}/g, '01/06/2026')
-    .replace(/{nom_agence}/g, 'Foncia Paris 1er')
-    .replace(/{lien_connexion}/g, 'https://foncia-locataire.fr/set-password?token=xxx')
+    .replace(/{nom_agence}/g, 'Sergic Paris 1er')
+    .replace(/{lien_connexion}/g, 'https://sergic-locataire.fr/set-password?token=xxx')
     .replace(/{date_signature}/g, '15/04/2026')
     .replace(/{numero_dossier}/g, 'DOS-2026-0042')
 
@@ -63,7 +63,7 @@ export function EmailEditor({ template, onSave }: EmailEditorProps) {
           </label>
           <button
             onClick={() => setPreview(!preview)}
-            className="text-sm text-foncia-blue hover:underline"
+            className="text-sm text-sergic-blue hover:underline"
           >
             {preview ? 'Éditer' : 'Aperçu'}
           </button>
@@ -98,7 +98,7 @@ export function EmailEditor({ template, onSave }: EmailEditorProps) {
             <button
               key={v}
               onClick={() => insertVariable(v)}
-              className="text-xs bg-foncia-bg text-foncia-navy px-2 py-1 rounded font-mono hover:bg-blue-100 transition-colors"
+              className="text-xs bg-sergic-bg text-sergic-navy px-2 py-1 rounded font-mono hover:bg-blue-100 transition-colors"
             >
               {v}
             </button>

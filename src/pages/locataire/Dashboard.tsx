@@ -92,11 +92,11 @@ export default function LocataireDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Prochain loyer */}
         <div className="card">
-          <h2 className="font-bold text-foncia-navy mb-4">Prochain loyer</h2>
+          <h2 className="font-bold text-sergic-navy mb-4">Prochain loyer</h2>
           {prochainsLoyer ? (
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-3xl font-bold text-foncia-navy">
+                <p className="text-3xl font-bold text-sergic-navy">
                   {(prochainsLoyer.montant + prochainsLoyer.charges).toLocaleString('fr-FR')} €
                 </p>
                 <p className="text-sm text-gray-500">
@@ -118,7 +118,7 @@ export default function LocataireDashboard() {
 
         {/* Dernier paiement */}
         <div className="card">
-          <h2 className="font-bold text-foncia-navy mb-4">Dernier paiement</h2>
+          <h2 className="font-bold text-sergic-navy mb-4">Dernier paiement</h2>
           {dernierPaiement ? (
             <div className="flex items-center justify-between">
               <div>
@@ -140,7 +140,7 @@ export default function LocataireDashboard() {
 
         {/* Accès rapides */}
         <div className="card lg:col-span-2">
-          <h2 className="font-bold text-foncia-navy mb-4">Accès rapides</h2>
+          <h2 className="font-bold text-sergic-navy mb-4">Accès rapides</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { to: '/locataire/quittances', icon: '🧾', label: 'Quittances' },
@@ -151,10 +151,10 @@ export default function LocataireDashboard() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="flex flex-col items-center gap-2 p-4 rounded-xl bg-foncia-bg hover:bg-blue-50 transition-colors text-center"
+                className="flex flex-col items-center gap-2 p-4 rounded-xl bg-sergic-bg hover:bg-blue-50 transition-colors text-center"
               >
                 <span className="text-3xl">{item.icon}</span>
-                <span className="text-sm font-medium text-foncia-navy">{item.label}</span>
+                <span className="text-sm font-medium text-sergic-navy">{item.label}</span>
               </Link>
             ))}
           </div>

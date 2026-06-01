@@ -69,7 +69,7 @@ export default function LocataireMessages() {
 
   return (
     <div className="flex flex-col h-[calc(100vh-8rem)]">
-      <PageHeader title="Messagerie" subtitle="Échangez avec votre gestionnaire Foncia" />
+      <PageHeader title="Messagerie" subtitle="Échangez avec votre gestionnaire Sergic" />
 
       <div className="card flex-1 flex flex-col overflow-hidden">
         <div className="flex-1 overflow-y-auto space-y-4 p-2">
@@ -88,12 +88,12 @@ export default function LocataireMessages() {
               <div
                 className={`max-w-xs sm:max-w-md lg:max-w-lg px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                   msg.expediteur === 'locataire'
-                    ? 'bg-foncia-blue text-white rounded-br-none'
+                    ? 'bg-sergic-blue text-white rounded-br-none'
                     : 'bg-gray-100 text-gray-800 rounded-bl-none'
                 }`}
               >
                 {msg.expediteur === 'admin' && (
-                  <p className="text-xs font-semibold text-foncia-orange mb-1">Foncia</p>
+                  <p className="text-xs font-semibold text-sergic-orange mb-1">Sergic</p>
                 )}
                 <p>{msg.contenu}</p>
                 <p className={`text-xs mt-1 ${msg.expediteur === 'locataire' ? 'text-white/60' : 'text-gray-400'}`}>

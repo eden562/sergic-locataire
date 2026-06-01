@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FonciaLogo } from '../components/FonciaLogo'
+import { SergicLogo } from '../components/SergicLogo'
 import { useAuth } from '../hooks/useAuth'
 
 export default function SetPassword() {
@@ -36,17 +36,17 @@ export default function SetPassword() {
   }
 
   return (
-    <div className="min-h-screen bg-foncia-bg flex items-center justify-center p-4">
+    <div className="min-h-screen bg-sergic-bg flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="flex justify-center mb-8">
-          <FonciaLogo size="lg" />
+          <SergicLogo size="lg" />
         </div>
 
         <div className="card">
           {done ? (
             <div className="text-center py-6">
               <div className="text-5xl mb-4">✅</div>
-              <h2 className="text-xl font-bold text-foncia-navy mb-2">
+              <h2 className="text-xl font-bold text-sergic-navy mb-2">
                 Mot de passe créé !
               </h2>
               <p className="text-gray-500 text-sm">
@@ -55,7 +55,7 @@ export default function SetPassword() {
             </div>
           ) : (
             <>
-              <h1 className="text-xl font-bold text-foncia-navy mb-1">
+              <h1 className="text-xl font-bold text-sergic-navy mb-1">
                 Créez votre mot de passe
               </h1>
               <p className="text-sm text-gray-500 mb-6">

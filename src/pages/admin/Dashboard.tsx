@@ -63,7 +63,7 @@ export default function AdminDashboard() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { to: '/admin/candidats', icon: '📝', label: 'Gérer les candidatures', color: 'bg-blue-50 text-foncia-blue' },
+          { to: '/admin/candidats', icon: '📝', label: 'Gérer les candidatures', color: 'bg-blue-50 text-sergic-blue' },
           { to: '/admin/locataires', icon: '🏘️', label: 'Gérer les locataires', color: 'bg-green-50 text-green-700' },
           { to: '/admin/loyers', icon: '💶', label: 'Suivi des loyers', color: 'bg-orange-50 text-orange-700' },
           { to: '/admin/emails', icon: '✉️', label: "Modèles d'emails", color: 'bg-purple-50 text-purple-700' },

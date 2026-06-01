@@ -36,18 +36,78 @@ const STATUT_LABEL: Record<StatutCandidature, string> = {
   signe: 'Signé',
 }
 
+const DOC_LABELS: Record<string, string> = {
+  identite: "Pièce d'identité",
+  salaire1: 'Bulletin de salaire (1)',
+  salaire2: 'Bulletin de salaire (2)',
+  salaire3: 'Bulletin de salaire (3)',
+  impots: "Avis d'imposition",
+  domicile: 'Justificatif de domicile',
+  contrat: 'Contrat de travail',
+  garant_identite: 'Garant — Pièce d\'identité',
+  garant_salaire: 'Garant — Justificatif de revenus',
+}
+
+function docLabel(url: string): string {
+  const filename = url.split('/').pop() ?? ''
+  const key = Object.keys(DOC_LABELS).find((k) => filename.includes(k))
+  return key ? DOC_LABELS[key] : filename.replace(/_\d+_/, ' — ')
+}
+
+function DocsPanel({ candidature, onClose }: { candidature: Candidature; onClose: () => void }) {
+  const docs = candidature.documents_urls ?? []
+  return (
+    <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between p-5 border-b border-gray-100">
+          <div>
+            <h2 className="font-bold text-sergic-navy text-lg">
+              Dossier — {candidature.prenom} {candidature.nom}
+            </h2>
+            <p className="text-xs text-gray-400">{docs.length} document(s)</p>
+          </div>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">×</button>
+        </div>
+        <div className="p-5 space-y-2 max-h-[60vh] overflow-y-auto">
+          {docs.length === 0 ? (
+            <p className="text-gray-400 text-sm text-center py-4">Aucun document déposé.</p>
+          ) : (
+            docs.map((url, i) => (
+              <a
+                key={i}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-lg border border-gray-100 hover:border-sergic-blue hover:bg-sergic-bg transition-colors group"
+              >
+                <span className="text-2xl">📄</span>
+                <span className="text-sm text-sergic-navy font-medium flex-1 group-hover:underline">
+                  {docLabel(url)}
+                </span>
+                <span className="text-xs text-sergic-orange">Ouvrir →</span>
+              </a>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function SortableRow({
   candidature,
   logements,
   onAccept,
   onRefuse,
   onAssignLogement,
+  onViewDocs,
 }: {
   candidature: Candidature
   logements: Logement[]
   onAccept: (c: Candidature) => void
   onRefuse: (id: string) => void
   onAssignLogement: (id: string, logementId: string | null) => void
+  onViewDocs: (c: Candidature) => void
 }) {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
     id: candidature.id,
@@ -69,11 +129,11 @@ function SortableRow({
         </button>
       </td>
       <td className="px-4 py-3">
-        <p className="font-medium text-foncia-navy">{candidature.prenom} {candidature.nom}</p>
+        <p className="font-medium text-sergic-navy">{candidature.prenom} {candidature.nom}</p>
         <p className="text-xs text-gray-500">{candidature.email}</p>
         <p className="text-xs text-gray-400">{candidature.telephone}</p>
       </td>
-      <td className="px-4 py-3 text-sm font-medium text-foncia-navy">
+      <td className="px-4 py-3 text-sm font-medium text-sergic-navy">
         {candidature.revenus.toLocaleString('fr-FR')} €/mois
       </td>
       <td className="px-4 py-3 min-w-[200px]">
@@ -108,30 +168,38 @@ function SortableRow({
         {new Date(candidature.created_at).toLocaleDateString('fr-FR')}
       </td>
       <td className="px-4 py-3">
-        {canAct ? (
-          <div className="flex gap-2">
-            <button
-              onClick={() => onAccept(candidature)}
-              disabled={!candidature.logement_id}
-              title={!candidature.logement_id ? "Assignez un bien d'abord" : ''}
-              className="text-xs bg-green-100 text-green-700 hover:bg-green-200 disabled:opacity-40 disabled:cursor-not-allowed px-3 py-1.5 rounded-lg font-medium transition-colors"
-            >
-              ✓ Accepter
-            </button>
-            <button
-              onClick={() => onRefuse(candidature.id)}
-              className="text-xs bg-red-100 text-red-700 hover:bg-red-200 px-3 py-1.5 rounded-lg font-medium transition-colors"
-            >
-              ✗ Refuser
-            </button>
-          </div>
-        ) : (
-          <span className="text-xs text-gray-400 font-medium">
-            {candidature.statut === 'accepte' && '✓ Accepté'}
-            {candidature.statut === 'refuse' && '✗ Refusé'}
-            {candidature.statut === 'signe' && '✍ Signé'}
-          </span>
-        )}
+        <div className="flex flex-col gap-1.5">
+          <button
+            onClick={() => onViewDocs(candidature)}
+            className="text-xs bg-sergic-bg text-sergic-blue hover:bg-blue-50 px-3 py-1.5 rounded-lg font-medium transition-colors text-left"
+          >
+            📎 Dossier ({candidature.documents_urls?.length ?? 0})
+          </button>
+          {canAct ? (
+            <div className="flex gap-1.5">
+              <button
+                onClick={() => onAccept(candidature)}
+                disabled={!candidature.logement_id}
+                title={!candidature.logement_id ? "Assignez un bien d'abord" : ''}
+                className="text-xs bg-green-100 text-green-700 hover:bg-green-200 disabled:opacity-40 disabled:cursor-not-allowed px-3 py-1.5 rounded-lg font-medium transition-colors"
+              >
+                ✓ Accepter
+              </button>
+              <button
+                onClick={() => onRefuse(candidature.id)}
+                className="text-xs bg-red-100 text-red-700 hover:bg-red-200 px-3 py-1.5 rounded-lg font-medium transition-colors"
+              >
+                ✗ Refuser
+              </button>
+            </div>
+          ) : (
+            <span className="text-xs text-gray-400 font-medium">
+              {candidature.statut === 'accepte' && '✓ Accepté'}
+              {candidature.statut === 'refuse' && '✗ Refusé'}
+              {candidature.statut === 'signe' && '✍ Signé'}
+            </span>
+          )}
+        </div>
       </td>
     </tr>
   )
@@ -144,6 +212,7 @@ export default function AdminCandidats() {
   const [loading, setLoading] = useState(true)
   const [processing, setProcessing] = useState<string | null>(null)
   const [acceptError, setAcceptError] = useState('')
+  const [viewingDocs, setViewingDocs] = useState<Candidature | null>(null)
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -196,7 +265,6 @@ export default function AdminCandidats() {
     const adresseBien = logement ? `${logement.adresse}, ${logement.ville}` : ''
 
     const { data, error } = await supabase.functions.invoke('accept-candidature', {
-      headers: { 'Content-Type': 'application/json' },
       body: {
         candidature_id: candidature.id,
         email: candidature.email,
@@ -261,7 +329,7 @@ export default function AdminCandidats() {
       <div className="card overflow-x-auto p-0">
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
           <table className="w-full">
-            <thead className="bg-foncia-bg">
+            <thead className="bg-sergic-bg">
               <tr>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-8">#</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Candidat</th>
@@ -289,6 +357,7 @@ export default function AdminCandidats() {
                       onAccept={accepter}
                       onRefuse={refuser}
                       onAssignLogement={assignLogement}
+                      onViewDocs={setViewingDocs}
                     />
                   ))
                 )}
@@ -297,6 +366,10 @@ export default function AdminCandidats() {
           </table>
         </DndContext>
       </div>
+
+      {viewingDocs && (
+        <DocsPanel candidature={viewingDocs} onClose={() => setViewingDocs(null)} />
+      )}
 
       {acceptError && (
         <div className="fixed bottom-6 right-6 bg-red-600 text-white px-5 py-3 rounded-xl shadow-lg z-50 flex items-center gap-3">
@@ -309,7 +382,7 @@ export default function AdminCandidats() {
         <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl p-6 text-center shadow-xl">
             <div className="text-3xl mb-3 animate-spin">⚙️</div>
-            <p className="font-medium text-foncia-navy">Traitement en cours…</p>
+            <p className="font-medium text-sergic-navy">Traitement en cours…</p>
             <p className="text-sm text-gray-500 mt-1">Création du compte et envoi des emails</p>
           </div>
         </div>

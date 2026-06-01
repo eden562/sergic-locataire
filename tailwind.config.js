@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        foncia: {
+        sergic: {
           navy: '#1a3a6e',
           blue: '#1e4fa0',
           orange: '#e8610a',
